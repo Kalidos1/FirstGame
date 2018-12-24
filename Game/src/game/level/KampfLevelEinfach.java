@@ -38,4 +38,8 @@ public class KampfLevelEinfach extends Level {
             }
         }
     }
+
+    public String toString() {
+        return "Kampf Level: Einfach";
+    }
 }

@@ -7,7 +7,7 @@ import game.level.tile.Tile;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Level {
+public abstract class Level {
 
 
     protected int width,height;
@@ -105,6 +105,8 @@ public class Level {
         if (tiles[x + y * width] == 0xFFB6AAFF) return Tile.road;
         return Tile.voidTile;
     }
+
+    public abstract String toString();
 
 
 }

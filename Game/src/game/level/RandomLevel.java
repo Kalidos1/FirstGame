@@ -19,4 +19,9 @@ public class RandomLevel extends Level {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return null;
+    }
 }

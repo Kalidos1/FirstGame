@@ -33,4 +33,8 @@ public class KampfLevelSchwer extends Level {
             }
         }
     }
+
+    public String toString() {
+        return "Kampf Level: Schwer";
+    }
 }

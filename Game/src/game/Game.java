@@ -37,6 +37,11 @@ public class Game extends Canvas implements Runnable {
     private String options[] = {"Spielen","Schliessen"};
     private String optionsSCH[] = {"Einfach","Mittel","Schwer","Ich möchte etwas anderes üben"};
     private String optionsREIHE[] = {"1","2","3","4","5","6","7","8","9","10"};
+    final ImageIcon iconGreen = new ImageIcon("res/textures/GreenCheckmark.png");
+    final ImageIcon iconRed = new ImageIcon("res/textures/RedCross.png");
+    final ImageIcon feuerwerk = new ImageIcon("res/textures/Feuerwerk.png");
+    boolean geoeffnet = false;
+    Random randomAufgabe = new Random();
 
     //BufferImage
     private BufferedImage image = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
@@ -167,14 +172,16 @@ public class Game extends Canvas implements Runnable {
         //all Graphics are displayed here before g.dispose
         g.drawImage(image,0,0,getWidth(),getHeight(),null);
         g.setFont(new Font("Verdana",0,50));
-        g.drawString(s,75,75);
+        g.drawString("Name: " + s,75,75);
+        g.drawString("Level: " + level.toString(),75,150);
+        g.drawString("E/Mouse: Reden",75,850);
+        g.drawString("F/Mouse: Kämpfen",75,925);
         g.dispose();
         bs.show();
     }
 
 
-    boolean geoeffnet = false;
-    Random randomAufgabe = new Random();
+
 
     public boolean interactionNPC() {
         for (Entity entity : level.entities) {
@@ -244,6 +251,7 @@ public class Game extends Canvas implements Runnable {
                             geoeffnet = true;
                             if (level.mobs.size() == 0) {
                                 geoeffnet = false;
+                                JOptionPane.showMessageDialog(frame,"Level Geschafft!",null,JOptionPane.INFORMATION_MESSAGE,feuerwerk);
                                 ladeSpawnLevel();
                             }
                         }
@@ -256,12 +264,17 @@ public class Game extends Canvas implements Runnable {
         return false;
     }
 
+
+
     public boolean mobeinfach() {
         int tmp = 1;
         while(tmp > 0) {
             String s = JOptionPane.showInputDialog(frame, randomAufgabe());
             if (checkAufgabe(s)) {
                 tmp--;
+                JOptionPane.showMessageDialog(frame,"Richtig! Noch " + tmp + " Aufgaben",null,JOptionPane.INFORMATION_MESSAGE,iconGreen);
+            } else {
+                JOptionPane.showMessageDialog(frame,"Falsch! Noch " + tmp + "Aufgaben",null,JOptionPane.INFORMATION_MESSAGE,iconRed);
             }
         }
         geoeffnet = false;
@@ -274,6 +287,9 @@ public class Game extends Canvas implements Runnable {
             String s = JOptionPane.showInputDialog(frame, randomAufgabe());
             if (checkAufgabe(s)) {
                 tmp--;
+                JOptionPane.showMessageDialog(frame,"Richtig! Noch " + tmp + " Aufgaben",null,JOptionPane.INFORMATION_MESSAGE,iconGreen);
+            } else {
+                JOptionPane.showMessageDialog(frame,"Falsch! Noch " + tmp + "Aufgaben",null,JOptionPane.INFORMATION_MESSAGE,iconRed);
             }
         }
         geoeffnet = false;
@@ -286,6 +302,9 @@ public class Game extends Canvas implements Runnable {
             String s = JOptionPane.showInputDialog(frame, randomAufgabe());
             if (checkAufgabe(s)) {
                 tmp--;
+                JOptionPane.showMessageDialog(frame,"Richtig! Noch " + tmp + " Aufgaben",null,JOptionPane.INFORMATION_MESSAGE,iconGreen);
+            } else {
+                JOptionPane.showMessageDialog(frame,"Falsch! Noch " + tmp + "Aufgaben",null,JOptionPane.INFORMATION_MESSAGE,iconRed);
             }
         }
         geoeffnet = false;

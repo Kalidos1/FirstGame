@@ -44,5 +44,9 @@ public class SpawnLevel extends Level {
         }
     }
 
+    public String toString() {
+        return "Spawn Level";
+    }
+
 
 }
